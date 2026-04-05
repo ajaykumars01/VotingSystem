@@ -49,3 +49,15 @@ input {
     margin-top: 20px;
     color: yellow;
 }
+
+.vote-option {
+    margin: 20px 0;
+}
+
+.vote-option img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    display: block;
+    margin: 10px auto;
+}
