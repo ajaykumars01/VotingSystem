@@ -1,32 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Results</title>
+    <title>Register</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body onload="loadResults()">
+<body>
 
 <div class="container-box">
-    <h2>Results</h2>
+    <h2>Register</h2>
 
-    <div class="result-row">
-        <img src="bjp.png"> BJP : <span id="bjpCount"></span>
-    </div>
+    <form onsubmit="return registerUser(event)">
+        <input type="text" id="username" placeholder="Username" required>
+        <input type="password" id="password" placeholder="Password" required>
 
-    <div class="result-row">
-        <img src="brs.png"> BRS : <span id="brsCount"></span>
-    </div>
+        <button class="btn-custom">Register</button>
+    </form>
 
-    <div class="result-row">
-        <img src="congress.png"> CONGRESS : <span id="congressCount"></span>
-    </div>
-
-    <div class="winner">
-        🏆 Winner: <span id="winner"></span>
-    </div>
+    <a href="login.html">Go to Login</a>
 </div>
 
+<!-- ✅ MUST BE HERE -->
 <script src="js/app.js"></script>
 
 </body>
