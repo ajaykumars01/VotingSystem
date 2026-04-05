@@ -54,8 +54,6 @@ function loginUser(e) {
 // ================= VOTE =================
 function vote(party) {
 
-    console.log("Vote function called"); // 🔥 debug
-
     let currentUser = localStorage.getItem("currentUser");
 
     if (!currentUser) {
@@ -81,7 +79,7 @@ function vote(party) {
 
     alert("Vote submitted successfully!");
 
-    // 🔥 NO redirect here at all
+    // ✅ NO REDIRECT HERE
 }
 
 
