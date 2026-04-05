@@ -6,27 +6,25 @@ function registerUser(e) {
     let password = document.getElementById("password").value.trim();
 
     if (username === "" || password === "") {
-        alert("Username and Password cannot be empty!");
+        alert("Fill all fields!");
         return false;
     }
 
-    if (username.length < 3 || password.length < 3) {
-        alert("Minimum 3 characters required!");
-        return false;
-    }
+    let users = JSON.parse(localStorage.getItem("users")) || [];
 
     // Check duplicate user
-    let savedUser = localStorage.getItem("user");
-    if (username === savedUser) {
+    let exists = users.find(u => u.username === username);
+    if (exists) {
         alert("Username already exists!");
         return false;
     }
 
-    // Save user
-    localStorage.setItem("user", username);
-    localStorage.setItem("pass", password);
+    // Add new user
+    users.push({ username: username, password: password, voted: false });
 
-    alert("Registration Successful! Please login.");
+    localStorage.setItem("users", JSON.stringify(users));
+
+    alert("Registration Successful!");
     window.location.href = "login.html";
 }
 
@@ -38,17 +36,17 @@ function loginUser(e) {
     let username = document.getElementById("username").value.trim();
     let password = document.getElementById("password").value.trim();
 
-    let savedUser = localStorage.getItem("user");
-    let savedPass = localStorage.getItem("pass");
+    let users = JSON.parse(localStorage.getItem("users")) || [];
 
-    if (username === savedUser && password === savedPass) {
-        // Save current logged-in user
+    let user = users.find(u => u.username === username && u.password === password);
+
+    if (user) {
         localStorage.setItem("currentUser", username);
 
         alert("Login Successful!");
         window.location.href = "vote.html";
     } else {
-        alert("Invalid Username or Password!");
+        alert("Invalid Credentials!");
     }
 }
 
@@ -59,28 +57,28 @@ function vote(party) {
     let currentUser = localStorage.getItem("currentUser");
 
     if (!currentUser) {
-        alert("Please login first!");
+        alert("Login first!");
         window.location.href = "login.html";
         return;
     }
 
-    let voted = localStorage.getItem(currentUser + "_voted");
+    let users = JSON.parse(localStorage.getItem("users")) || [];
 
-    if (voted === "true") {
+    let user = users.find(u => u.username === currentUser);
+
+    if (user.voted) {
         alert("You already voted!");
         return;
     }
 
-    let count = localStorage.getItem(party);
-
-    if (count === null) {
-        count = 0;
-    }
-
+    // Count vote
+    let count = localStorage.getItem(party) || 0;
     localStorage.setItem(party, parseInt(count) + 1);
 
-    // Mark this user as voted
-    localStorage.setItem(currentUser + "_voted", "true");
+    // Mark user as voted
+    user.voted = true;
+
+    localStorage.setItem("users", JSON.stringify(users));
 
     alert("Vote submitted successfully!");
     window.location.href = "results.html";
@@ -114,7 +112,7 @@ function loadResults() {
 }
 
 
-// ================= LOGOUT (OPTIONAL) =================
+// ================= LOGOUT =================
 function logout() {
     localStorage.removeItem("currentUser");
     alert("Logged out!");

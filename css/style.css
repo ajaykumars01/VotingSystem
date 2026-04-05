@@ -71,3 +71,19 @@ input {
     color: yellow;
     font-weight: bold;
 }
+
+.vote-item {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.vote-item img {
+    width: 80px;
+    display: block;
+    margin: 10px auto;
+    pointer-events: none;
+}
+
+a button {
+    margin-top: 15px;
+}
