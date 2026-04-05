@@ -13,6 +13,7 @@ body {
     color: white;
 }
 
+/* BUTTON */
 .btn-custom {
     width: 100%;
     padding: 12px;
@@ -22,18 +23,38 @@ body {
     background: linear-gradient(to right, #00c6ff, #0072ff);
     color: white;
     cursor: pointer;
+    font-size: 16px;
 }
 
+.btn-custom:hover {
+    transform: scale(1.05);
+}
+
+/* INPUT */
 input {
     width: 100%;
     padding: 10px;
     margin: 10px 0;
 }
 
-.vote-option img {
-    width: 80px;
+/* 🔥 VOTE FIX */
+.vote-item {
+    text-align: center;
+    margin-bottom: 20px;
 }
 
+/* 🔥 IMPORTANT FIX */
+.vote-item img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    display: block;
+    margin: 10px auto;
+
+    pointer-events: none;   /* 💥 THIS FIXES CLICK ISSUE */
+}
+
+/* RESULTS */
 .result-row {
     display: flex;
     align-items: center;
@@ -48,31 +69,5 @@ input {
 .winner {
     margin-top: 20px;
     color: yellow;
-}
-
-.vote-option {
-    margin: 20px 0;
-}
-
-.vote-option img {
-    width: 80px;
-    height: 80px;
-    object-fit: contain;
-    display: block;
-    margin: 10px auto;
-}
-
-.vote-item {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.vote-item img {
-    width: 80px;  
-    display: block;
-    margin: 10px auto;
-}
-
-.vote-item button {
-    width: 100%;
+    font-weight: bold;
 }
