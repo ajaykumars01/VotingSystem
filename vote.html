@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<body class="container mt-5">
+
+<h2>Vote</h2>
+
+<button onclick="vote('Alice')">Alice</button>
+<button onclick="vote('Bob')">Bob</button>
+<button onclick="vote('Charlie')">Charlie</button>
+
+<script>
+function vote(c){
+ fetch("/vote",{
+  method:"POST",
+  headers:{
+    "Content-Type":"application/json",
+    "Authorization":localStorage.getItem("token")
+  },
+  body:JSON.stringify({candidate:c})
+ })
+ .then(res=>res.text())
+ .then(alert);
+}
+</script>
+
+</body>
+</html>

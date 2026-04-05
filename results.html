@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Results</h2>
+<div id="res"></div>
+
+<script>
+fetch("/results")
+.then(res=>res.json())
+.then(data=>{
+ let html="";
+ data.forEach(v=>{
+  html+=v.candidate+" : "+v.count+"<br>";
+ });
+ res.innerHTML=html;
+});
+</script>
+
+</body>
+</html>
