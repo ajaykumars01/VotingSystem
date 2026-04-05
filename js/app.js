@@ -15,12 +15,14 @@ function registerUser(e) {
         return false;
     }
 
+    // Check duplicate user
     let savedUser = localStorage.getItem("user");
     if (username === savedUser) {
         alert("Username already exists!");
         return false;
     }
 
+    // Save user
     localStorage.setItem("user", username);
     localStorage.setItem("pass", password);
 
@@ -33,17 +35,20 @@ function registerUser(e) {
 function loginUser(e) {
     e.preventDefault();
 
-    let username = document.getElementById("username").value;
-    let password = document.getElementById("password").value;
+    let username = document.getElementById("username").value.trim();
+    let password = document.getElementById("password").value.trim();
 
     let savedUser = localStorage.getItem("user");
     let savedPass = localStorage.getItem("pass");
 
     if (username === savedUser && password === savedPass) {
+        // Save current logged-in user
+        localStorage.setItem("currentUser", username);
+
         alert("Login Successful!");
         window.location.href = "vote.html";
     } else {
-        alert("Invalid Credentials!");
+        alert("Invalid Username or Password!");
     }
 }
 
@@ -51,7 +56,15 @@ function loginUser(e) {
 // ================= VOTE =================
 function vote(party) {
 
-    let voted = localStorage.getItem("voted");
+    let currentUser = localStorage.getItem("currentUser");
+
+    if (!currentUser) {
+        alert("Please login first!");
+        window.location.href = "login.html";
+        return;
+    }
+
+    let voted = localStorage.getItem(currentUser + "_voted");
 
     if (voted === "true") {
         alert("You already voted!");
@@ -65,7 +78,9 @@ function vote(party) {
     }
 
     localStorage.setItem(party, parseInt(count) + 1);
-    localStorage.setItem("voted", "true");
+
+    // Mark this user as voted
+    localStorage.setItem(currentUser + "_voted", "true");
 
     alert("Vote submitted successfully!");
     window.location.href = "results.html";
@@ -96,4 +111,12 @@ function loadResults() {
     }
 
     document.getElementById("winner").innerText = winner;
+}
+
+
+// ================= LOGOUT (OPTIONAL) =================
+function logout() {
+    localStorage.removeItem("currentUser");
+    alert("Logged out!");
+    window.location.href = "login.html";
 }
