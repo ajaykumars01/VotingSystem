@@ -2,35 +2,32 @@
 <html>
 <head>
     <title>Results</title>
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body>
+<body onload="loadResults()">
 
 <div class="container-box">
-
     <h2>Results</h2>
 
     <div class="result-row">
-        <img src="bjp.png">
-        BJP : 1
+        <img src="bjp.png"> BJP : <span id="bjpCount"></span>
     </div>
 
     <div class="result-row">
-        <img src="brs.png">
-        BRS : 0
+        <img src="brs.png"> BRS : <span id="brsCount"></span>
     </div>
 
     <div class="result-row">
-        <img src="congress.png">
-        CONGRESS : 0
+        <img src="congress.png"> CONGRESS : <span id="congressCount"></span>
     </div>
 
     <div class="winner">
-        🏆 Winner: BJP
+        🏆 Winner: <span id="winner"></span>
     </div>
-
 </div>
+
+<script src="js/app.js"></script>
 
 </body>
 </html>

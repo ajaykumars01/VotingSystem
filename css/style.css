@@ -10,12 +10,7 @@ body {
     padding: 30px;
     border-radius: 15px;
     text-align: center;
-    box-shadow: 0px 10px 30px rgba(0,0,0,0.5);
     color: white;
-}
-
-h2 {
-    margin-bottom: 20px;
 }
 
 .btn-custom {
@@ -26,37 +21,23 @@ h2 {
     border-radius: 8px;
     background: linear-gradient(to right, #00c6ff, #0072ff);
     color: white;
-    font-size: 16px;
     cursor: pointer;
-    transition: 0.3s;
-}
-
-.btn-custom:hover {
-    transform: scale(1.05);
 }
 
 input {
     width: 100%;
     padding: 10px;
-    margin: 8px 0;
-    border-radius: 5px;
-    border: none;
-}
-
-.vote-option {
-    margin: 20px 0;
+    margin: 10px 0;
 }
 
 .vote-option img {
     width: 80px;
-    display: block;
-    margin: auto;
 }
 
 .result-row {
     display: flex;
     align-items: center;
-    margin: 15px 0;
+    margin: 10px 0;
 }
 
 .result-row img {
@@ -65,10 +46,6 @@ input {
 }
 
 .winner {
-    background: rgba(0,0,0,0.3);
-    padding: 10px;
     margin-top: 20px;
-    border-radius: 10px;
     color: yellow;
-    font-weight: bold;
 }

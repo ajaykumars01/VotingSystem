@@ -2,31 +2,36 @@
 <html>
 <head>
     <title>Vote</title>
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
 <div class="container-box">
-
     <h2>Vote</h2>
 
     <div class="vote-option">
         <img src="bjp.png">
-        <button class="btn-custom">BJP</button>
+        <button class="btn-custom" onclick="vote('bjp')">BJP</button>
     </div>
 
     <div class="vote-option">
         <img src="brs.png">
-        <button class="btn-custom">BRS</button>
+        <button class="btn-custom" onclick="vote('brs')">BRS</button>
     </div>
 
     <div class="vote-option">
         <img src="congress.png">
-        <button class="btn-custom">CONGRESS</button>
+        <button class="btn-custom" onclick="vote('congress')">CONGRESS</button>
     </div>
 
+    <a href="results.html">
+        <button class="btn-custom">View Results</button>
+    </a>
+
 </div>
+
+<script src="js/app.js"></script>
 
 </body>
 </html>
