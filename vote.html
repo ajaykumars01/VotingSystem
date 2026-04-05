@@ -1,27 +1,32 @@
 <!DOCTYPE html>
 <html>
-<body class="container mt-5">
+<head>
+    <title>Vote</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
 
-<h2>Vote</h2>
+<body>
 
-<button onclick="vote('Alice')">Alice</button>
-<button onclick="vote('Bob')">Bob</button>
-<button onclick="vote('Charlie')">Charlie</button>
+<div class="container-box">
 
-<script>
-function vote(c){
- fetch("/vote",{
-  method:"POST",
-  headers:{
-    "Content-Type":"application/json",
-    "Authorization":localStorage.getItem("token")
-  },
-  body:JSON.stringify({candidate:c})
- })
- .then(res=>res.text())
- .then(alert);
-}
-</script>
+    <h2>Vote</h2>
+
+    <div class="vote-option">
+        <img src="bjp.png">
+        <button class="btn-custom">BJP</button>
+    </div>
+
+    <div class="vote-option">
+        <img src="brs.png">
+        <button class="btn-custom">BRS</button>
+    </div>
+
+    <div class="vote-option">
+        <img src="congress.png">
+        <button class="btn-custom">CONGRESS</button>
+    </div>
+
+</div>
 
 </body>
 </html>
