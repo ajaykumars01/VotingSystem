@@ -34,3 +34,24 @@ function loginUser(e) {
         alert("Invalid Credentials!");
     }
 }
+
+function vote(party) {
+    let voted = localStorage.getItem("voted");
+
+    if (voted) {
+        alert("You already voted!");
+        return;
+    }
+
+    let count = localStorage.getItem(party);
+
+    if (count == null) {
+        count = 0;
+    }
+
+    localStorage.setItem(party, parseInt(count) + 1);
+    localStorage.setItem("voted", true);
+
+    alert("Vote submitted successfully!");
+    window.location.href = "results.html";
+}
