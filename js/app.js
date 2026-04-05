@@ -54,6 +54,8 @@ function loginUser(e) {
 // ================= VOTE =================
 function vote(party) {
 
+    console.log("Vote function called"); // 🔥 debug
+
     let currentUser = localStorage.getItem("currentUser");
 
     if (!currentUser) {
@@ -71,7 +73,19 @@ function vote(party) {
         return;
     }
 
-    // Count vote
+    let count = localStorage.getItem(party) || 0;
+    localStorage.setItem(party, parseInt(count) + 1);
+
+    user.voted = true;
+    localStorage.setItem("users", JSON.stringify(users));
+
+    alert("Vote submitted successfully!");
+
+    // 🔥 NO redirect here at all
+}
+
+
+  
     let count = localStorage.getItem(party) || 0;
     localStorage.setItem(party, parseInt(count) + 1);
 
