@@ -24,8 +24,8 @@ function registerUser(e) {
     localStorage.setItem("user", username);
     localStorage.setItem("pass", password);
 
-    alert("Registration Successful");
-    window.location.href = "vote.html";
+    alert("Registration Successful Please Login,");
+    window.location.href = "register.html";
 }
 
 // LOGIN
