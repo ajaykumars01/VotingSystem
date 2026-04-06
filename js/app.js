@@ -1,4 +1,3 @@
-// ================= REGISTER =================
 function registerUser(e) {
     e.preventDefault();
 
@@ -7,27 +6,28 @@ function registerUser(e) {
 
     if (username === "" || password === "") {
         alert("Fill all fields!");
-        return false;
+        return;
     }
 
     let users = JSON.parse(localStorage.getItem("users")) || [];
 
-    // Check duplicate user
     let exists = users.find(u => u.username === username);
     if (exists) {
         alert("Username already exists!");
-        return false;
+        return;
     }
 
-    // Add new user
     users.push({ username: username, password: password, voted: false });
 
     localStorage.setItem("users", JSON.stringify(users));
 
     alert("Registration Successful!");
-    window.location.href = "login.html";
-}
 
+    // ✅ Redirect to login
+    setTimeout(() => {
+        window.location.href = "login.html";
+    }, 300);
+}
 
 // ================= LOGIN =================
 function loginUser(e) {
