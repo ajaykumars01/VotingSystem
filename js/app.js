@@ -22,6 +22,9 @@ function registerUser(e) {
     localStorage.setItem("users", JSON.stringify(users));
 
     alert("Registration Successful!");
+    alert("Redirecting now...");
+    
+window.location.href = "login.html";
 
     // ✅ Redirect to login
     setTimeout(() => {
